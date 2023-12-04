@@ -1,0 +1,10 @@
+$primary-color: #3498db;
+
+.player-container{
+  background-color: $primary-color;
+  display: flex;
+  flex-flow: column;
+  width: 100vw;
+  height: 100vh;
+}
+
