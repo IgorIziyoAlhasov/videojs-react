@@ -1,3 +1,4 @@
 import ApplicationNav from "./ApplicationNav";
+import Footer from "./Footer";
 
-export {ApplicationNav}
+export { ApplicationNav, Footer }

@@ -1,10 +1,54 @@
-$primary-color: #3498db;
+$primary-color: #acacac;
 
-.player-container{
+body,
+*,
+::after,
+::before,
+:root {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+::after,
+::before,
+:root {
+  box-sizing: border-box;
+}
+
+.video-app {
   background-color: $primary-color;
   display: flex;
   flex-flow: column;
   width: 100vw;
-  height: 100vh;
-}
+  height: 100%;
 
+  .player-container {
+    height: 100vh;
+  }
+
+  .app-header {
+    display: flex;
+    max-width: 64rem;
+    align-items: center;
+    justify-content: space-between;
+    background-color: transparent;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: .5rem;
+    padding-bottom: 0.5rem;
+
+    .app-navigation {
+
+      display: flex;
+      flex-flow: row;
+
+
+      a {
+        padding: 1rem;
+        text-decoration: none;
+        
+      }
+    }
+  }
+}
