@@ -1,8 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+$primary-nav-color: #242526;
 
 nav {
     display: flex;
-    background: #242526;
+    background: $primary-nav-color;
 
     .wrapper {
         position: relative;

@@ -1,7 +1,8 @@
 $primary-color: #acacac;
-$primary-nav-color: rgba(156, 39, 176, 0.2);
+$primary-nav-color: #242526;
 $primary-neutral-color: rgb(255, 255, 255);
 $active-color: #995db5;
+
 body,
 *,
 ::after,
@@ -20,31 +21,39 @@ body,
 }
 
 .video-app {
-  background-color: $primary-color;
+  background-color: $primary-neutral-color;
   display: flex;
   flex-flow: column;
   width: 100vw;
   height: 100%;
+  justify-content: center;
+  align-items: center;
 
-  .player-container {
-    height: 100vh;
+  .app-header {
+    width: 100vw;
   }
 
-  // .app-header {
-  //   display: flex;
-  //   align-items: center;
-  //   justify-content: space-around;
-  //   background-color: transparent;
-  //   padding-top: 0.75rem;
-  //   padding-bottom: 0.55rem;
-  //   font-family: Poppins, sans-serif;
-  //   text-transform: uppercase;
-  //   font-size: 1.25rem;
-  //   line-height: 0.875;
-  //   font-weight: bold;
-  //   background-image: linear-gradient($primary-nav-color, $primary-neutral-color);
-  //   background-size: 1rem 10rem;
+  .page-content {
+    height: 100%;
+    display: flex;
+    width: 80vw;
+    flex-flow: column;
 
-  //   border-bottom: 0.1rem solid;
-  // }
+
+    .section-title {
+      font-size: 2.75rem;
+      padding-top: .75rem;
+      padding-bottom: .15rem;
+      border-bottom: .025rem solid $primary-color;
+    }
+  }
+
+  footer {
+    display: flex;
+    border-top: 1px solid $primary-nav-color;
+    background-color: lighten($color: $primary-nav-color, $amount: 20);
+    color: $primary-neutral-color;
+    padding: 1.75rem 1rem .75rem 1rem;
+    width: 100vw;
+  }
 }
