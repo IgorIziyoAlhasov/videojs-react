@@ -1,0 +1,73 @@
+.page-content {
+
+
+    .section-descriptions {
+        width: 20rem;
+        max-width: 30rem;
+    }
+
+    .media-container {
+        display: flex;
+        flex-flow: row;
+        gap: 1rem;
+
+
+        .vjs-container {
+            flex-grow: 2;
+            min-width: 40rem;
+        }
+
+        .player-input {
+            flex-grow: 1;
+            max-width: 40rem;
+
+
+            .source-change-input {
+                display: flex;
+                width: 100%;
+            }
+
+
+            .sample-links {
+                padding-top: 1rem;
+
+                p.section-descriptions {
+                    font-weight: bold;
+                }
+
+                .links-list {
+                    list-style: none;
+                    margin-left: 1rem;
+                    margin-top: 1rem;
+                    max-width: 40rem;
+                    font-size: 0.75rem;
+
+                    .linke-sample {
+                        cursor: pointer;
+                        border: 1px solid darkgray;
+                        padding: .25rem;
+
+
+                        &::before{
+                            position: absolute;
+                            content: 'copied';
+                            background-color: aquamarine;
+                            display: none;
+                            padding: .25rem;
+                            border: 1.5px dashed darken($color: aquamarine, $amount: 50);
+                        }
+
+                        &:hover {
+                            background-color: gray;
+                        }
+
+                        &.copied::before {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}
