@@ -29,12 +29,12 @@ const ApplicationNav = () => {
             </li>
             <li>
               <NavLink
-                to="/custom"
+                to="/redesign"
                 className={({ isActive }) =>
                   isActive ? 'menu-item-active' : ''
                 }
               >
-                Custom
+                Redesigned
               </NavLink>
             </li>
             <li>
@@ -49,12 +49,12 @@ const ApplicationNav = () => {
             </li>
             <li>
               <NavLink
-                to="/redesign"
+                to="/custom"
                 className={({ isActive }) =>
                   isActive ? 'menu-item-active' : ''
                 }
               >
-                Redesigned
+                Custom Control
               </NavLink>
             </li>
           </ul>

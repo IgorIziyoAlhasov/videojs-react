@@ -19,11 +19,11 @@ const Home = () => {
         </Link></li>
 
         <li><Link
-          to="/custom"
+          to="/redesign"
           rel="noopener noreferrer"
           className=""
         >
-          Custom controls
+          Custom styled player
         </Link></li>
 
         <li><Link
@@ -35,11 +35,11 @@ const Home = () => {
         </Link></li>
 
         <li><Link
-          to="/redesign"
+          to="/custom"
           rel="noopener noreferrer"
           className=""
         >
-          Custom styled player
+          Custom controls
         </Link></li>
       </ul>
     </section>
