@@ -1,11 +1,14 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import videojs from 'video.js';
 import 'video.js/dist/video-js.css';
-import './../styles/player.scss'
+import './../styles/player.scss';
+import VideoJSTitle from './VideoJSTitle';
 
 const Player = (props) => {
     const videoRef = React.useRef(null);
     const playerRef = React.useRef(null);
+    let player = null;
+    const [currentSource, setCurrentSource] = useState(null)
     const { options, onReady, videoSource } = props;
 
     useEffect(() => {
@@ -14,23 +17,28 @@ const Player = (props) => {
             const videoElement = document.createElement("video-js");
 
             videoElement.classList.add('vjs-big-play-centered');
-            videoRef.current.appendChild(videoElement);
+            videoRef.current.insertAdjacentElement('beforeend',videoElement);
 
-            const player = playerRef.current = videojs(videoElement, options, () => {
+            player = playerRef.current = videojs(videoElement, options, () => {
                 onReady && onReady(player);
             });
 
+            setCurrentSource(player.currentSource());
+
         } else {
-            const player = playerRef.current;
+            player = playerRef.current;
 
             player.autoplay(options.autoplay);
             player.src(options.sources);
+            setCurrentSource(player.currentSource());
+
+
         }
 
     }, [options, videoRef, videoSource])
 
     useEffect(() => {
-        const player = playerRef.current;
+        player = playerRef.current;
 
         return () => {
             if (player && !player.isDisposed()) {
@@ -42,10 +50,11 @@ const Player = (props) => {
 
 
     return (
-        <div className='player-wrapper' data-vjs-player>
-            <div ref={videoRef} />
+        <div className='player-wrapper'  data-vjs-player>
+            {currentSource && <VideoJSTitle source={currentSource} />}
+            <div className="player-container" ref={videoRef}></div>
         </div>
     )
 }
 
-export default Player
+export default Player;
