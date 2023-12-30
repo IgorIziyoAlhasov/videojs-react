@@ -1,4 +1,24 @@
+$green: #a2ed56;
+$title-background: rgba(43, 51, 63, 0.25);
+
 .player-wrapper {
     max-width: 800px;
     min-width: 240px;
+}
+
+.rvjs-video-title {
+    display: flex;
+    height: 0;
+
+    .title-text {
+        display: flex;
+        position: relative;
+        color: $green;
+        padding-left: 0.75rem;
+        padding-top: 0.25rem;
+        background-color: $title-background;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
 }
