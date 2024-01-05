@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react'
 import Player from '../components/Player';
 import VJSPlaylist from '../components/VJSPlaylist';
 import '../styles/basic.scss';
+import '../styles/Redesigned.scss'
 
 const Playlist = () => {
   const sourcePickerRef = useRef(null);
@@ -39,7 +40,7 @@ const Playlist = () => {
       <p className='section-content'>Here is my take on playlist for Video.js</p>
 
       <div className="media-container">
-        <div className="vjs-container">
+        <div className="vjs-container custom-style">
           <Player
             options={videoJsOptions}
           />
