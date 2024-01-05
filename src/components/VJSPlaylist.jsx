@@ -1,31 +1,31 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/playlist.scss';
 import { playlistAPI } from '../assets/constants/variables'
 
-const VJSPlaylist = ({setVideo}) => {
+const VJSPlaylist = ({ setVideo }) => {
   const playlist = playlistAPI;
   const [currentVideoIndex, setCurrentVideoIndex] = useState(null)
 
-  const handlePlaylistItemClick = (e, index) => {
+  const handlePlaylistItemClick = (index) => {
     setCurrentVideoIndex(index);
-    setVideo(playlist[index].src);
   }
 
-  const handleNextVideoClick = (e) => {
-    let currentVideoIndex = currentVideoIndex;
-    if (currentVideoIndex === null || currentVideoIndex >= playlist.length - 1) {
-      setCurrentVideoIndex(0);
-    } else {
-      setCurrentVideoIndex(++currentVideoIndex);
-    }
-  }
+  useEffect(() => {
+    if (currentVideoIndex !== null)
+      setVideo(playlist[currentVideoIndex].src);
+  }, [currentVideoIndex])
 
-  const handlePrevVideoClick = (e) => {
+  const handleNavigationButtonClick = (e) => {
     let currentIndex = currentVideoIndex;
-    if (currentIndex === null || currentIndex <= 0) {
-      setCurrentVideoIndex(playlist.length - 1);
-    } else {
-      setCurrentVideoIndex(--currentIndex);
+    const { direction } = e.target.dataset;
+    if (direction === 'next') {
+      (currentIndex === null || currentIndex >= playlist.length - 1) ?
+        setCurrentVideoIndex(0) :
+        setCurrentVideoIndex(++currentIndex);
+    } else if (direction === 'prev') {
+      (currentIndex === null || currentIndex <= 0) ?
+        setCurrentVideoIndex(playlist.length - 1) :
+        setCurrentVideoIndex(--currentIndex);
     }
   }
 
@@ -36,19 +36,21 @@ const VJSPlaylist = ({setVideo}) => {
           {playlist.map((videoSource, index) => (
             <div key={index}
               className={`playlist-item ${index === currentVideoIndex ? "currently-playing" : ""}`}
-              onClick={(e) => handlePlaylistItemClick(e, index)}>{videoSource.videoTitle}</div>
+              onClick={() => handlePlaylistItemClick(index)}>{videoSource.videoTitle}</div>
           ))}
         </div>
       </div>
       <div className="playlist-controls">
         <button
-          className='previouse-item'
-          onClick={handlePrevVideoClick}
-        >Previous</button>
+          className='previouse-item playlist-nav-control'
+          data-direction="prev"
+          onClick={handleNavigationButtonClick}
+        >&lt;&lt;</button>
         <button
-          className='next-item'
-          onClick={handleNextVideoClick}
-        >Next</button>
+          className='next-item playlist-nav-control'
+          data-direction="next"
+          onClick={handleNavigationButtonClick}
+        >&gt;&gt;</button>
       </div>
     </section>
   )
